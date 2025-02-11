@@ -1,9 +1,9 @@
 # Ecommerce SQL Analysis 📊
 
-## Overview
+## Overview  
 This project contains SQL queries for analyzing e-commerce sales data. The dataset includes transaction details like invoice numbers, stock codes, item descriptions, quantities, prices, and customer locations.
 
-## Database Schema
+## Database Schema  
 - **InvoiceNo**: Unique identifier for each transaction  
 - **StockCode**: Product code  
 - **Description**: Item description  
@@ -13,15 +13,16 @@ This project contains SQL queries for analyzing e-commerce sales data. The datas
 - **CustomerID**: Unique customer identifier  
 - **Country**: Country of purchase  
 
-## Queries
-1. **Table Creation & Data Insertion** ✅  
-2. **Sales Analysis Queries** ✅  
+## Queries  
+### 1️⃣ Table Creation & Data Insertion ✅  
+- The database is structured using **PostgreSQL**, and data is inserted using `COPY` from a CSV file.  
 
-## Usage
-To run the SQL script:  
-1. Open **pgAdmin** or any SQL client  
-2. Run `ecommerce_database.sql`  
-
----
-📌 **Author**: Milo Hamza Hamdi Anik  
-🚀 **Tech Stack**: PostgreSQL | SQL | Data Analysis  
+### 2️⃣ Sales Analysis Queries ✅  
+These queries help analyze **sales trends and customer behavior**, such as:  
+- **Top-selling products**  
+```sql
+SELECT Description, SUM(Quantity) AS TotalSold
+FROM ecommerce_data
+GROUP BY Description
+ORDER BY TotalSold DESC
+LIMIT 10;
