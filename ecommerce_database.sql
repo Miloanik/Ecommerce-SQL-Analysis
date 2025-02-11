@@ -24,3 +24,22 @@ VALUES
 
 -- Step 4: Query the data
 SELECT * FROM ecommerce_data LIMIT 10;
+
+-- 1️⃣ Top-Selling Products
+SELECT Description, SUM(Quantity) AS TotalSold
+FROM ecommerce_data
+GROUP BY Description
+ORDER BY TotalSold DESC
+LIMIT 10;
+
+-- 2️⃣ Total Revenue by Country
+SELECT Country, SUM(Quantity * UnitPrice) AS TotalRevenue
+FROM ecommerce_data
+GROUP BY Country
+ORDER BY TotalRevenue DESC;
+
+-- 3️⃣ Monthly Sales Trends
+SELECT DATE_TRUNC('month', InvoiceDate) AS Month, SUM(Quantity * UnitPrice) AS TotalRevenue
+FROM ecommerce_data
+GROUP BY Month
+ORDER BY Month;
